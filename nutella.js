@@ -13,7 +13,7 @@ var TwitterNode = require('./twitter-node/lib/twitter-node').TwitterNode,
 var twit = new TwitterNode({
   user: 'twitterUsername', // Yes, use your Twitter account.
   password: 'twitterPassword',
-  track: ['bieber'], // Comma delimited list.
+  track: ['nutella'], // Comma delimited list.
   // locations: [-122.75, 36.8, -121.75, 37.8] // tweets in SF
 });
 
