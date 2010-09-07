@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Nutella tracker</title>
+	
+	<script type="text/javascript"
+   src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript">
+  var conn;
+  var connect = function() {
+    if (window["WebSocket"]) {
+      conn = new WebSocket("ws://127.0.0.1:8000");
+      conn.onmessage = function(evt) {
+        data = JSON.parse(evt.data);
+        var t = new Date(data['created_at']);
+        // Preload images so everything is smoother.
+        $('<img />')
+            .attr('src', data['profile_image_url'])
+            .addClass('profile-image-url')
+            .load(function(){
+              $('#tweets').prepend($('<div class="tweet"><div class="details"><div class="screen-name">@<a href="http://twitter.com/' + data['screen_name'] + '">' + data['screen_name'] + '</a>:</div><div class="message">' + data['text'] + '</div><div class="created-at">' + t.toLocaleTimeString() + ' ' + '<a href="http://twitter.com/' + data['screen_name'] + '/status/' + data['id'] + '">#</a></div></div></div>').prepend(this));
+            });
+        console.log(data['tweet']);
+      };
+    }
+  };
+  window.onload = connect;
+  </script>
+  <style>
+    body { background: #dfdfdf; }
+    #tweets { width: 768px; margin: 0 auto; }
+    .tweet { clear: both; }
+    .profile-image-url { float: left; margin: 7px 10px 0 0; width: 48px; height: 48px; }
+    .details { float: left; margin: 5px 0; background: #fff; padding: 7px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+    .screen-name { float: left; width: 150px; overflow: hidden; }
+    .message { float: left; width: 450px; }
+    .created-at { float: left; width: 100px; text-align: right; }
+  </style>
+</head>
+
+<body>
+  <div id="tweets">
+  </div>
+</body>
+</html>
