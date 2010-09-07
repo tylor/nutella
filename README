@@ -1,0 +1,7 @@
+This is a simple implementation of a live Twitter tracker. It uses node.js + WebSockets + Twitter Streaming API to push tweets onto a page in realtime.
+
+Using a couple of nice libraries:
+- http://github.com/technoweenie/twitter-node
+- http://github.com/miksago/node-websocket-server
+
+With some guidance from: http://jeffkreeftmeijer.com/2010/experimenting-with-node-js/
