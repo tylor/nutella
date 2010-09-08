@@ -1,0 +1,6 @@
+[submodule "lib/twitter-node"]
+	path = lib/twitter-node
+	url = git://github.com/technoweenie/twitter-node.git
+[submodule "lib/node-websocket-server"]
+	path = lib/node-websocket-server
+	url = git://github.com/miksago/node-websocket-server.git

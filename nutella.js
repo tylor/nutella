@@ -5,8 +5,8 @@
  *
  * With some guidance from: http://jeffkreeftmeijer.com/2010/experimenting-with-node-js/
  */
-var TwitterNode = require('./twitter-node/lib/twitter-node').TwitterNode,
-    ws          = require('./node-websocket-server/lib/ws'),
+var TwitterNode = require('./lib/twitter-node/lib/twitter-node').TwitterNode,
+    ws          = require('./lib/node-websocket-server/lib/ws'),
     server      = ws.createServer(),
     sys         = require('sys');
 
