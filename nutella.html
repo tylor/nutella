@@ -22,7 +22,8 @@
             .attr('src', data['profile_image_url'])
             .addClass('profile-image-url')
             .load(function(){
-              $('#tweets').prepend($('<div class="tweet"><div class="details"><div class="screen-name">@<a href="http://twitter.com/' + data['screen_name'] + '">' + data['screen_name'] + '</a>:</div><div class="message">' + data['text'] + '</div><div class="created-at">' + t.toLocaleTimeString() + ' ' + '<a href="http://twitter.com/' + data['screen_name'] + '/status/' + data['id'] + '">#</a></div></div></div>').prepend(this));
+              $('#tweets').prepend($('<div class="tweet"><div class="details"><div class="screen-name">@<a href="http://twitter.com/' + data['screen_name'] + '">' + data['screen_name'] + '</a>:</div><div class="message">' + data['text'] + '</div><div class="created-at">' + t.toLocaleTimeString() + ' ' + '<a href="http://twitter.com/' + data['screen_name'] + '/status/' + data['id'] + '">#</a></div></div></div>').prepend(this).hide());
+              $('.tweet').first().slideDown();
             });
         console.log(data['tweet']);
       };
