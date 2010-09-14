@@ -1,6 +1,14 @@
 This is a simple implementation of a live Twitter tracker. It uses node.js + WebSockets + Twitter Streaming API to push tweets onto a page in realtime. See it in action: http://vimeo.com/14761659
 
-Get started: install node.js, clone the dependencies into the same directory, and start with 'node nutella.js'.
+To get started: 
+- install node.js
+- clone the repository with 'git clone git://github.com/tylor/nutella.git'
+- move into the directory 'cd nutella'
+- initialize the submodules: 'git submodule init'
+- update the submodules: 'git submodule update'
+- enter your Twitter credentials in nutella.js
+- start server by running 'node nutella.js'.
+- open nutella.html in a modern browser with WebSockets support, like Chrome.
 
 Using a couple of nice libraries:
 - http://github.com/technoweenie/twitter-node
