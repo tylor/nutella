@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <title>The Nutella tracker</title>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = new io.Socket();
+    socket.connect();
+    socket.on('message', function(tweet) {
+      // Preload images so everything is smoother.
+      $('<img />')
+        .attr('src', tweet.user.profile_image_url)
+        .addClass('profile-image-url')
+        .load(function(){
+          $('#tweets').prepend($('<div class="tweet"><div class="details"><div class="screen-name">@<a href="http://twitter.com/' + tweet.user.screen_name + '">' + tweet.user.screen_name + '</a>:</div><div class="message">' + tweet.text + '</div><div class="created-at">' + new Date(tweet.created_at).toLocaleTimeString() + ' ' + '<a href="http://twitter.com/' + tweet.user.screen_name + '/status/' + tweet.id + '">#</a></div></div></div>').prepend(this).hide());
+          $('.tweet').first().slideDown();
+        });
+      });
+  </script>
+  <style>
+    body { background: #dfdffe; width: 768px; margin: auto; }
+    h1 { font-family: Helvetica, Arial, sans-serif; }
+    #tweets { width: 768px; }
+    .tweet { clear: both; }
+    .profile-image-url { float: left; margin: 7px 10px 0 0; width: 48px; height: 48px; }
+    .details { float: left; margin: 5px 0; background: #fff; padding: 7px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+    .screen-name { float: left; width: 150px; overflow: hidden; }
+    .message { float: left; width: 450px; }
+    .created-at { float: left; width: 100px; text-align: right; }
+  </style>
+</head>
+
+<body>
+  <h1>So much Nutella</h1>
+  <%- body %>
+</body>
+</html>
