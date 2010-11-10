@@ -9,6 +9,7 @@ To get started:
   - 'npm install twitter-node' 
 - clone the repository with 'git clone git://github.com/tylor/nutella.git'.
 - move into the directory 'cd nutella'.
+- since this is a branch right now, switch: 'git checkout express'
 - enter your Twitter credentials in server.js.
 - start server by running 'node server.js'.
 - open a browser at http://localhost:3000 and see the magic.
